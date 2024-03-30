@@ -1,5 +1,3 @@
-package ru.raiffeisen.fxpi.external.rates.ru.raiffeisen.fxpi.external.rates.mapper
-
 import java.math.BigDecimal
 
 class NegativeNumbersParser(private val positiveNumbersParser: PositiveNumbersParser): NumberStringParser {
@@ -12,13 +10,13 @@ class NegativeNumbersParser(private val positiveNumbersParser: PositiveNumbersPa
     }
 
     override fun parseString(inputString: String): BigDecimal? {
-        try {
+        return try {
             val replacedString = inputString.replaceNegativeSymbols()
             val parsedPositive = positiveNumbersParser.parseString(replacedString)
-            return parsedPositive?.multiply(BigDecimal(-1))
+            parsedPositive?.multiply(BigDecimal(-1))
         } catch (e: Exception) {
             println("Exception while parsing negative number string=$inputString: $e")
-            return null
+            null
         }
     }
 

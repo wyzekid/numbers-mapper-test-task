@@ -1,5 +1,10 @@
-plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
-}
 rootProject.name = "numbers-mapper-test-tesk"
 
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven("https://plugins.gradle.org/m2/")
+    }
+}

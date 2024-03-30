@@ -1,10 +1,11 @@
-package ru.raiffeisen.fxpi.external.rates.ru.raiffeisen.fxpi.external.rates.mapper
-
 class BaseStringParser {
     private val bankCardsParser = BankCardsParser()
     private val positiveNumbersParser = PositiveNumbersParser()
     private val negativeNumbersParser = NegativeNumbersParser(positiveNumbersParser = positiveNumbersParser)
-    private val currencyNumbersParser = CurrencyNumbersParser(positiveNumbersParser = positiveNumbersParser, negativeNumbersParser = negativeNumbersParser)
+    private val currencyNumbersParser = CurrencyNumbersParser(
+        positiveNumbersParser = positiveNumbersParser,
+        negativeNumbersParser = negativeNumbersParser
+    )
 
     private val stringParsers = listOf(
         bankCardsParser,

@@ -1,5 +1,6 @@
 plugins {
-    kotlin("jvm") version "1.9.21"
+    application
+    kotlin("jvm") version "1.9.20"
 }
 
 group = "org.numberutils"

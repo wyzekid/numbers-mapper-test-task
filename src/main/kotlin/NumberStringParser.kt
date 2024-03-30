@@ -1,5 +1,3 @@
-package ru.raiffeisen.fxpi.external.rates.ru.raiffeisen.fxpi.external.rates.mapper
-
 import java.math.BigDecimal
 
 interface NumberStringParser {

@@ -1,5 +1,3 @@
-package ru.raiffeisen.fxpi.external.rates.ru.raiffeisen.fxpi.external.rates.mapper
-
 import java.math.BigDecimal
 
 class BankCardsParser: NumberStringParser {
@@ -11,14 +9,14 @@ class BankCardsParser: NumberStringParser {
     }
 
     override fun parseString(inputString: String): BigDecimal? {
-        try {
-            val matchResult = regex.matchEntire(inputString) ?: return null
-            val numberString = matchResult.value
+        return try {
+            val numberString = inputString
                 .replace(" ", "")
                 .replace("-", "")
-            return BigDecimal(numberString)
+            BigDecimal(numberString)
         } catch (e: Exception) {
-            TODO("Not yet implemented")
+            println("Exception while parsing bank cards number string=$inputString: $e")
+            null
         }
     }
 
