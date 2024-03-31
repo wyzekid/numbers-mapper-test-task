@@ -6,15 +6,9 @@ class BankCardsParserTest {
     private val cardsParser = BankCardsParser()
 
     @Test
-    fun shouldFailParseCardNumber() {
-        val number = cardsParser.parseString("1234-5678-1234-5678")
-        assertEquals(null, number)
-    }
-
-    @Test
-    fun shouldFailParsePointCardNumber() {
-        val number = cardsParser.parseString("4321.5678.1234.5678")
-        assertEquals(null, number)
+    fun shouldParseCardNumberWithZero() {
+        val number = cardsParser.parseString("0234-5678-1234-5678")
+        assertEquals(BigDecimal.valueOf(234567812345678), number)
     }
 
     @Test
@@ -30,9 +24,9 @@ class BankCardsParserTest {
     }
 
     @Test
-    fun shouldParseNoSpacesCardNumber() {
+    fun shouldFailNoSpacesCardNumber() {
         val number = cardsParser.parseString("4321567812345678")
-        assertEquals(BigDecimal.valueOf(4321567812345678), number)
+        assertEquals(null, number)
     }
 
     @Test
@@ -41,5 +35,10 @@ class BankCardsParserTest {
         assertEquals(null, number)
     }
 
+    @Test
+    fun shouldFailParsePointCardNumber() {
+        val number = cardsParser.parseString("4321.5678.1234.5678")
+        assertEquals(null, number)
+    }
 
 }

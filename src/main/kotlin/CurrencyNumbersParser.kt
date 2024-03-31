@@ -5,8 +5,6 @@ class CurrencyNumbersParser(
     private val positiveNumbersParser: PositiveNumbersParser
 ): NumberStringParser {
 
-    private val regexRemoveSpaces = Regex("""(?<!\d)\s(?!\d)""")
-
     override fun isPatternMatch(inputString: String): Boolean {
         return inputString.contains(Regex("[$£]"))
     }
@@ -17,7 +15,7 @@ class CurrencyNumbersParser(
             if (positiveNumbersParser.isPatternMatch(replacedString)) {
                 return positiveNumbersParser.parseString(replacedString)
             }
-            if (negativeNumbersParser.isPatternMatch(inputString)) {
+            if (negativeNumbersParser.isPatternMatch(replacedString)) {
                 return negativeNumbersParser.parseString(replacedString)
             }
             println("Currency number doesn't match positive or negative number")
@@ -34,8 +32,9 @@ class CurrencyNumbersParser(
 
     private fun String.replaceSymbols(): String {
         return this
-            .replace(regexRemoveSpaces, "")
-            .replace("[$£]", "")
+            .replace(" ", "")
+            .replace("$", "")
+            .replace("£", "")
     }
 
 }

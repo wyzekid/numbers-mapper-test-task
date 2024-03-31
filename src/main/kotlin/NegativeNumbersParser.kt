@@ -11,7 +11,9 @@ class NegativeNumbersParser(private val positiveNumbersParser: PositiveNumbersPa
 
     override fun parseString(inputString: String): BigDecimal? {
         return try {
-            val replacedString = inputString.replaceNegativeSymbols()
+            val replacedString = inputString
+                .replaceNegativeSymbols()
+                .replace(" ", "")
             val parsedPositive = positiveNumbersParser.parseString(replacedString)
             parsedPositive?.multiply(BigDecimal(-1))
         } catch (e: Exception) {
