@@ -1,4 +1,4 @@
-rootProject.name = "numbers-mapper-test-tesk"
+rootProject.name = "numbers-mapper-test-task"
 
 pluginManagement {
     repositories {
